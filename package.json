@@ -37,8 +37,9 @@
     "repl": "node lib/repl-cli.js",
     "prepack": "node lib/prepack-cli.js",
     "validate": "npm run build && npm run lint && npm run depcheck && npm run flow && npm test",
-    "prepublish": "npm run build",
-    "depcheck": "babel-node scripts/detect_bad_deps.js"
+    "prepublish": "npm run snyk-protect; npm run build",
+    "depcheck": "babel-node scripts/detect_bad_deps.js",
+    "snyk-protect": "snyk protect"
   },
   "dependencies": {
     "babel-core": "^6.8.0",
@@ -49,7 +50,8 @@
     "babylon": "^6.5.2",
     "base62": "^1.1.2",
     "seedrandom": "^2.4.2",
-    "source-map": "^0.5.6"
+    "source-map": "^0.5.6",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
@@ -87,5 +89,6 @@
     "prepack"
   ],
   "license": "BSD-3-Clause",
-  "author": "Facebook"
+  "author": "Facebook",
+  "snyk": true
 }
